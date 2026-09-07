@@ -1,0 +1,6 @@
+*.exe
+*.out
+*.o
+movie_booking
+.vscode/
+.idea/
