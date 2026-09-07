@@ -190,13 +190,10 @@ public:
             selectedSeats.push_back(seat);
         }
 
-        // Compile-time polymorphism: calls the two-argument overload of
-        // calculateTotal() for UPI (5% instant discount), and the plain
-        // single-argument overload otherwise. The compiler picks the
-        // correct overload at compile time based on the arguments passed.
-        double total = (paymentChoice == 1)
-            ? this->priceCalculator.calculateTotal(selectedSeats, 5.0)
-            : this->priceCalculator.calculateTotal(selectedSeats);
+        // Compile-time polymorphism: calls the overloaded calculateTotal()
+// function with the selected seats. Pricing follows the assignment:
+// SILVER = Rs.150, GOLD = Rs.250, PLATINUM = Rs.400.
+double total = this->priceCalculator.calculateTotal(selectedSeats);
 
         // DIP in action: BookingService asks the injected factory for a
         // Payment* - it has no idea which concrete class comes back.
